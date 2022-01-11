@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import {
   View,
   Text,
@@ -7,43 +8,51 @@ import {
   Button
 } from "react-native";
 import styles from "./style";
-
+import StyledButton from "../../components/StyledButton";
 import { getAuth,createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignupScreen = () => {
-    const auth=getAuth()
+  const auth=getAuth()
+  const [email,setEmail]=useState("")
+  const [password,setPassword]=useState('')
+
+  const handleSignup=(()=>{
+    createUserWithEmailAndPassword(auth,email,password)
+    .then(({user})=>{
+        console.log(user)
+    })
+    .catch((error)=>{
+      
+      console.log(error.code)
+      if(error.code=='auth/invalid-email'){
+        console.warn('Invalid Email')
+      }
+    })
+  })
+
+
   return (
-    <KeyboardAvoidingView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.textInput}
           placeholder="email"
-          //   value={}
-          // onChangeText={(text)=>{}}
+           value={email}
+           onChangeText={(text)=>{setEmail(text)}}
         />
         <TextInput
           style={styles.textInput}
           placeholder="password"
-          //   value={}
-          // onChangeText={(text)=>{}}
+            value={password}
+           onChangeText={(text)=>{setPassword(text)}}
           secureTextEntry
         />
       </View>
       <View style={styles.buttonContainer}>
-        <Button title="Login" style={styles.button} />
-        <Button title="Register" style={styles.button } onPress={()=>{
-            createUserWithEmailAndPassword(auth,'test@email.com','12341412')
-            .then((user)=>{
-                console.log(user)
-            })
-            .catch((error)=>{
-                console.log(error)
-            })
-        }} />
-        
-        
+        <StyledButton text="Cancel" />
+        <StyledButton primary text="Signup" onPress={handleSignup} />       
       </View>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 

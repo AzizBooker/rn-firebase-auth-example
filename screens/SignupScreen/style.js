@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:"center",
         paddingTop:20,
-        padding:50
+        padding:40
       
     },
     textInput:{
@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
         
     },
     buttonContainer:{
-        flexDirection:"row",
-        justifyContent:"space-between",
+        width:"50%",
+        flexDirection:"row", 
         paddingTop:20
         
     },

@@ -11,7 +11,7 @@ export default function RootNavigator() {
 const isSignedIn=false
   return (
       <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Signup"
       screenOptions={{
           headerShown:false
       }}
