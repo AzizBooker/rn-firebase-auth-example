@@ -2,7 +2,6 @@ import React from 'react'
 import { View, Text,TouchableOpacity} from 'react-native'
 import StyledButton from '../../components/StyledButton'
 import styles from './style'
-
 const AuthHomeScreen = ({navigation}) => {
     console.log(navigation)
     return (
