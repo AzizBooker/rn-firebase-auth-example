@@ -9,32 +9,25 @@ import {
 } from "react-native";
 import styles from "./style";
 import StyledButton from "../../components/StyledButton";
-import { getAuth,createUserWithEmailAndPassword } from "firebase/auth";
-import { setIsSignedInTrue } from "../../Redux/slices/rootSlice";
+import { getAuth,signInWithEmailAndPassword } from "firebase/auth";
+import { setIsSignedInFalse, setIsSignedInTrue } from "../../Redux/slices/rootSlice";
 import { useSelector,useDispatch } from "react-redux";
-const SignupScreen = () => {
+const LoginScreen = () => {
   const auth=getAuth()
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState('')
-  const [confirmPassword,setConfirmPassword]=useState("")
   const dispatch=useDispatch()
 
 
   const handleSignup=(()=>{
-
-
-    createUserWithEmailAndPassword(auth,email,password)
-    .then(({user})=>{
+    signInWithEmailAndPassword(auth,email,password)
+    .then((user)=>{
+      console.log(user)
       dispatch(setIsSignedInTrue())
     })
     .catch((error)=>{
-      
-     // console.log(error.code)
-      if(error.code=='auth/invalid-email'){
-        console.warn('Invalid Email')
-      }
+      console.warn(error)
     })
- 
   })
 
 
@@ -57,10 +50,10 @@ const SignupScreen = () => {
       </View>
       <View style={styles.buttonContainer}>
         <StyledButton text="Cancel" />
-        <StyledButton primary text="Signup" onPress={handleSignup} />       
+        <StyledButton primary text="Log in" onPress={handleSignup} />       
       </View>
     </View>
   );
 };
 
-export default SignupScreen;
+export default LoginScreen;

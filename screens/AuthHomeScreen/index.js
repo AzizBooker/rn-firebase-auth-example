@@ -7,7 +7,7 @@ const AuthHomeScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Welcome!</Text>
-            <StyledButton text="Login" onPress={()=>{console.log('Login')}}/>
+            <StyledButton text="Log In" onPress={()=>{navigation.navigate('Login')}}/>
             <StyledButton primary text="Sign Up" onPress={()=>{navigation.navigate('Signup')}} />
         </View>
     )

@@ -14,11 +14,14 @@ reducers:{
     },
     setIsSignedInTrue:(state)=>{
         state.isSignedIn=true
+    },
+    setIsSignedInFalse:(state)=>{
+        state.isSignedIn=false
     }
 }
 
 })
 
-export const {toggleIsSignedIn,setIsSignedInTrue}= rootSlice.actions
+export const {toggleIsSignedIn,setIsSignedInTrue,setIsSignedInFalse}= rootSlice.actions
 
 export default rootSlice.reducer

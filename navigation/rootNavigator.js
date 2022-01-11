@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import AuthHomeScreen from '../screens/AuthHomeScreen'
 import SignupScreen from "../screens/SignupScreen";
+import LoginScreen from '../screens/LoginScreen'
 import Colors from "../utils/Colors";
 import { useSelector } from "react-redux";
 const Stack = createStackNavigator();
@@ -25,6 +26,7 @@ const isSignedIn=useSelector((state)=>state.root.isSignedIn)
         <>
         <Stack.Screen name="Home" component={AuthHomeScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
         </>
           
         
