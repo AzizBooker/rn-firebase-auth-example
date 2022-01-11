@@ -10,20 +10,24 @@ import {
 import styles from "./style";
 import StyledButton from "../../components/StyledButton";
 import { getAuth,createUserWithEmailAndPassword } from "firebase/auth";
-
+import { setIsSignedInTrue } from "../../Redux/slices/rootSlice";
+import { useSelector,useDispatch } from "react-redux";
 const SignupScreen = () => {
   const auth=getAuth()
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState('')
+  const dispatch=useDispatch()
+
 
   const handleSignup=(()=>{
     createUserWithEmailAndPassword(auth,email,password)
     .then(({user})=>{
-        console.log(user)
+      console.log(user)
+      dispatch(setIsSignedInTrue())
     })
     .catch((error)=>{
       
-      console.log(error.code)
+     // console.log(error.code)
       if(error.code=='auth/invalid-email'){
         console.warn('Invalid Email')
       }

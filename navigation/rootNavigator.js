@@ -5,13 +5,14 @@ import HomeScreen from "../screens/HomeScreen";
 import AuthHomeScreen from '../screens/AuthHomeScreen'
 import SignupScreen from "../screens/SignupScreen";
 import Colors from "../utils/Colors";
+import { useSelector } from "react-redux";
 const Stack = createStackNavigator();
 
 export default function RootNavigator() {
-const isSignedIn=false
+const isSignedIn=useSelector((state)=>state.root.isSignedIn)
   return (
       <Stack.Navigator
-      initialRouteName="Signup"
+      initialRouteName="Home"
       screenOptions={{
           headerShown:false
       }}
