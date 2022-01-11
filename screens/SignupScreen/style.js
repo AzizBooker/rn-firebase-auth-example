@@ -4,8 +4,8 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         justifyContent:"center",
-        alignItems:'center',
         paddingTop:20,
+        padding:50
       
     },
     textInput:{
@@ -16,7 +16,17 @@ const styles = StyleSheet.create({
     buttonContainer:{
         flexDirection:"row",
         justifyContent:"space-between",
+        paddingTop:20
         
+    },
+    button:{
+        height:40,
+        borderRadius:20,
+       
+        
+    },
+    text:{
+       
     }
 })
 
